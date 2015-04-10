@@ -23,12 +23,12 @@ function changeZoneColor(color) {
 function autoRoute() {
     if (!isAutoRouted) {
         isAutoRouted = true;
+        //ymaps.route.options.set({ strokeColor: "0000ffff", opacity: 0.9 });
         //Опишем точки, в которые нам нужно заехать. Маршрут проложится автоматически
         ymaps.route([
-                [55.773556, 49.171588],
-                [55.752654, 49.166603],
-                [55.793288, 49.126733],
-                [55.801211, 49.140748]
+                [55.837004, 49.203549],
+                [55.812737, 49.205444],
+                [55.847493, 49.239356]
             ]
 
         ).then(function (route) {
@@ -42,6 +42,27 @@ function autoRoute() {
             }, function (error) {
                 alert('Возникла ошибка: ' + error.message);
             });
+        ymaps.route([
+                [55.788905, 49.133983],
+                [55.775029, 49.136588],
+                [55.779211, 49.130722],
+                [55.79184, 49.131172],
+                [55.793925, 49.151626]
+
+            ]
+
+        ).then(function (route) {
+                curAutoRoute = route;
+                myMap.geoObjects.add(route);
+                var points = route.getWayPoints(),
+                    lastPoint = points.getLength() - 1;
+                //для того, чтобы на карте не было страшных "булавок"
+                points.options.set('iconImageHref', './images/transparent.png');
+                console.log(points);
+            }, function (error) {
+                alert('Возникла ошибка: ' + error.message);
+            });
+
     } else {
         isAutoRouted = false;
         myMap.geoObjects.remove(curAutoRoute);
