@@ -9,7 +9,6 @@
         <option name="RES_FOLDER_RELATIVE_PATH" value="/../res" />
         <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/../assets" />
         <option name="LIBS_FOLDER_RELATIVE_PATH" value="/../libs" />
-        <option name="PROGUARD_LOGS_FOLDER_RELATIVE_PATH" value="/../proguard_logs" />
       </configuration>
     </facet>
   </component>
@@ -25,3 +24,4 @@
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
+
