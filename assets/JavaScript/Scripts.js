@@ -55,7 +55,7 @@ function autoRoute() {
                 });
 
             // Вахитовский
-            ymaps.route([[55.785043, 49.140487], [vahit_district]]).then(function (route) {
+            ymaps.route([[55.785043, 49.140487], vahit_district]).then(function (route) {
                     curAutoRoute = route;
                     myMap.geoObjects.add(route);
                     var points = route.getWayPoints(),
