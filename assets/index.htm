@@ -152,6 +152,7 @@
                 width: 44px;
                 height: 300px;
                 margin-left: 40px;
+                step: 0.01;
                 border-radius: 100px;
                 background-image: url("Images/sliders/sliderBase.png");
             }
@@ -204,32 +205,29 @@
 
         </div>
         <script>
-            var x0 = 30, y0 = 48, z0 = 91;
+            var x0 = 50, y0 = 50, z0 = 91;
 
             $( "#slider1" ).slider({
                 orientation: "vertical",
                 range: "min",
                 min: 0,
                 max: 100,
-                value: 30,
+                value: 50,
                 slide: function( event, ui ) {
                     var newY, newZ;
                     x = ui.value;
                     y =  $('#slider2').slider("option", "value");
                     z =  $('#slider3').slider("option", "value");
 
-                    if (x > x0) {
-                        newY = (y - 1);
-                        newZ = (z - 2);
-                    }
-                    else {
-                        newY = (y + 1);
-                        newZ = (z + 2);
-                    }
-                    x0 = x;
-                    y0 = newY;
-                    z0 = newZ;
-
+					var dx;
+					dx = x - x0;
+                    newY = y - dx;
+					x0 = x;
+					y0 = newY;
+                    newZ = 10*y0/x0;
+					z0 = newZ;
+                    console.log("BEFORE: x = " + x + ", y = " + y + ", z = " + z);
+                    console.log("dx = " + dx + ", x0 = " + x0 + "y0 = " + y0 + "z0 = " + z0);
                     $('#slider2').slider('value', newY);
                     $('#slider3').slider('value',  newZ);
                     genDataRoute(x0,y0,z0);
@@ -241,22 +239,18 @@
                 range: "min",
                 min: 0,
                 max: 100,
-                value: 48,
+                value: 50,
                 slide: function (event, ui) {
                     var newX, newZ;
 					x = $('#slider1').slider("option", "value");
                     y = ui.value;
 					z =  $('#slider3').slider("option", "value");
-                    if (y > y0) {
-                        newX = x-1;
-                        newZ = z-2;
-                    }
-                    else {
-                        newX = x+1;
-                        newZ = z+2;
-                    }
-                    x0 = newX;
+                    var dy;
+                    dy = y - y0;
+                    newX = x - dy;
                     y0 = y;
+                    x0 = newX;
+                    newZ = 10*y0/x0;
                     z0 = newZ;
 
                     $('#slider1').slider('value', newX );
@@ -275,14 +269,8 @@
                     x =  $('#slider1').slider("option", "value");
                     y =  $('#slider2').slider("option", "value");
                     z = ui.value;
-                    if (z > z0) {
-                        newX = x - 1;
-                        newY = y - 2;
-                    }
-                    else {
-                        newX = x + 1;
-                        newY = y + 2;
-                    }
+                    newX = 1000 / (10 + z);
+                    newY = 100 - newX;
                     x0 = newX;
                     y0 = newY;
                     z0 = z;
@@ -291,7 +279,7 @@
                     genDataRoute(x0,y0,z0);
                 }
             });
-            //$( "#amount" ).val( $( "#slider-vertical" ).slider( "value" ) );
+
         </script>
 
 	</body>
