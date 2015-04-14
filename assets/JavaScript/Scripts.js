@@ -16,6 +16,7 @@ var isAreasShown = false, isTruckVisible = true, isBucketsVisible = true, isSate
 var lastId = -123;
 var autoRoutCase;
 var msk_district, kirov_district, vahit_district, sov_district, nsav_district, privol_district, avia_district;
+var  msk_truck, kirov_truck, vahit_truck, sov_truck, nsav_truck, privol_truck, avia_truck;
 
 
 function changeZoneColor(color) {
@@ -24,9 +25,7 @@ function changeZoneColor(color) {
 
 function routeCase1() {
     // Авиастроительный
-    ymaps.route(avia_district.concat([
-            [55.858018, 49.084684]
-        ])).then(function (route) {
+    ymaps.route(avia_district.concat([avia_truck])).then(function (route) {
         curAutoRoute = route;
         myMap.geoObjects.add(route);
         var points = route.getWayPoints(),
@@ -39,9 +38,7 @@ function routeCase1() {
     });
 
     // Московский
-    ymaps.route(msk_district.concat([
-            [55.864268, 49.001104]
-        ])).then(function (route) {
+    ymaps.route(msk_district.concat([msk_truck])).then(function (route) {
         curAutoRoute = route;
         myMap.geoObjects.add(route);
         var points = route.getWayPoints(),
@@ -54,9 +51,7 @@ function routeCase1() {
     });
 
     // Вахитовский
-    ymaps.route(vahit_district.concat([
-            [55.785043, 49.140487]
-        ])).then(function (route) {
+    ymaps.route(vahit_district.concat([vahit_truck])).then(function (route) {
         curAutoRoute = route;
         myMap.geoObjects.add(route);
         var points = route.getWayPoints(),
@@ -69,9 +64,7 @@ function routeCase1() {
     });
 
     // Ново-Савиновский;
-    ymaps.route(nsav_district.concat([
-            [55.823146, 49.14788]
-        ])).then(function (route) {
+    ymaps.route(nsav_district.concat([nsav_truck])).then(function (route) {
         console.log("НОВОСАВИНОВСИКЙ РАЙОН :: " + nsav_district.length);
         curAutoRoute = route;
         myMap.geoObjects.add(route);
@@ -85,9 +78,7 @@ function routeCase1() {
     });
 
     // Кировский
-    ymaps.route(kirov_district.concat([
-            [55.797787, 49.068496]
-        ])).then(function (route) {
+    ymaps.route(kirov_district.concat([kirov_truck])).then(function (route) {
         curAutoRoute = route;
         myMap.geoObjects.add(route);
         var points = route.getWayPoints(),
@@ -100,9 +91,7 @@ function routeCase1() {
     });
 
     // Приволжский
-    ymaps.route(privol_district.concat([
-            [55.732884, 49.104995]
-        ])).then(function (route) {
+    ymaps.route(privol_district.concat([privol_truck])).then(function (route) {
         curAutoRoute = route;
         myMap.geoObjects.add(route);
         var points = route.getWayPoints(),
@@ -115,9 +104,7 @@ function routeCase1() {
     });
 
     // Советский
-    ymaps.route(privol_district.concat([
-            [55.831954, 49.192742]
-        ])).then(function (route) {
+    ymaps.route(privol_district.concat([sov_truck])).then(function (route) {
         curAutoRoute = route;
         myMap.geoObjects.add(route);
         var points = route.getWayPoints(),
@@ -130,7 +117,9 @@ function routeCase1() {
     });
 }
 
+// Красный цвет
 function routeCase2(){
+
     // Авиастроительный + Московский
     ymaps.route(avia_district.concat(msk_district).concat([
             [55.858018, 49.084684]
@@ -145,28 +134,8 @@ function routeCase2(){
     }, function (error) {
         alert('Возникла ошибка: ' + error.message);
     });
-//
-//    //Кировский + Вахитовский
-//    ymaps.route(avia_district.concat(vahit_district).concat([
-//            [55.858018, 49.084684]
-//        ])).then(function (route) {
-//        curAutoRoute = route;
-//        myMap.geoObjects.add(route);
-//        var points = route.getWayPoints(),
-//            lastPoint = points.getLength() - 1;
-//        //для того, чтобы на карте не было страшных "булавок"
-//        points.options.set('iconImageHref', './images/transparent.png');
-//        console.log(points);
-//    }, function (error) {
-//        alert('Возникла ошибка: ' + error.message);
-//    });
+    ymaps.route.options.set({ strokeColor: "BD0000", opacity: 0.9 });
 
-    //
-
-
-}
-
-function routeCase3(){
     //Кировский + Вахитовский
     ymaps.route(avia_district.concat(vahit_district).concat([
             [55.858018, 49.084684]
@@ -181,6 +150,54 @@ function routeCase3(){
     }, function (error) {
         alert('Возникла ошибка: ' + error.message);
     });
+    ymaps.route.options.set({ strokeColor: "BD0000", opacity: 0.9 });
+
+    // Ново-Савиновский;
+    ymaps.route(nsav_district.concat([nsav_truck])).then(function (route) {
+        console.log("НОВОСАВИНОВСИКЙ РАЙОН :: " + nsav_district.length);
+        curAutoRoute = route;
+        myMap.geoObjects.add(route);
+        var points = route.getWayPoints(),
+            lastPoint = points.getLength() - 1;
+        //для того, чтобы на карте не было страшных "булавок"
+        points.options.set('iconImageHref', './images/transparent.png');
+        console.log(points);
+    }, function (error) {
+        alert('Возникла ошибка: ' + error.message);
+    });
+    ymaps.route.options.set({ strokeColor: "BD0000", opacity: 0.9 });
+
+    // Приволжский
+    ymaps.route(privol_district.concat([privol_truck])).then(function (route) {
+        curAutoRoute = route;
+        myMap.geoObjects.add(route);
+        var points = route.getWayPoints(),
+            lastPoint = points.getLength() - 1;
+        //для того, чтобы на карте не было страшных "булавок"
+        points.options.set('iconImageHref', './images/transparent.png');
+        console.log(points);
+    }, function (error) {
+        alert('Возникла ошибка: ' + error.message);
+    });
+    ymaps.route.options.set({ strokeColor: "BD0000", opacity: 0.9 });
+
+    // Советский
+    ymaps.route(privol_district.concat([sov_truck])).then(function (route) {
+        curAutoRoute = route;
+        myMap.geoObjects.add(route);
+        var points = route.getWayPoints(),
+            lastPoint = points.getLength() - 1;
+        //для того, чтобы на карте не было страшных "булавок"
+        points.options.set('iconImageHref', './images/transparent.png');
+        console.log(points);
+    }, function (error) {
+        alert('Возникла ошибка: ' + error.message);
+    });
+    ymaps.route.options.set({ strokeColor: "BD0000", opacity: 0.9 });
+}
+
+function routeCase3(){
+
 }
 
 function autoRoute() {
@@ -411,64 +428,17 @@ ymaps.ready(function () {
     changeZoneColor(yellow);
     hideAreas();
 
-    //    addPlaceMark([55.793288, 49.126733]); // наш
-    realBucket = buckets[0];
-
-//    //ново-савиновский район
-//    addPlaceMark([55.850176, 49.090756]); // 1
-//    addPlaceMark([55.830023, 49.160672]); // 2
-//    addPlaceMark([55.811948, 49.077848]); // 1
-//    addPlaceMark([55.839375, 49.063079]); // 1
-//    addPlaceMark([55.849211, 49.153594]); // 2
-//    addPlaceMark([55.820025, 49.175081]); // 2
-//    addPlaceMark([55.814093, 49.103333]); // 1
-
-    // Московский район
-    addPlaceMark([55.872299, 48.969825]);
-    addPlaceMark([55.865738, 48.923481]);
-    addPlaceMark([55.892774, 48.960878 ]);
-    addPlaceMark([55.881768, 48.893531]);
-    addPlaceMark([55.897397, 48.898544]);
-
-//    //Советский
-//    addPlaceMark([55.837004, 49.203549]);
-//    addPlaceMark([55.812737, 49.205444]);
-//    addPlaceMark([55.847493, 49.239356]);
-//
-//    //Приволжский
-//    addPlaceMark([55.718978, 49.100189]);
-//    addPlaceMark([55.730335, 49.143299]);
-//
-//    //Вахитовский
-//    addPlaceMark([55.788905, 49.133983]);
-//    addPlaceMark([55.775029, 49.136588]);
-//    addPlaceMark([55.779211, 49.130722]);
-//    addPlaceMark([55.79184, 49.131172]);
-//    addPlaceMark([55.793925, 49.151626]);
-//    addPlaceMark([55.733427, 49.129824]);
-
-    //Кировский
-    addPlaceMark([55.835301, 49.059154]);
-
-    //Авиастроительный
-    addPlaceMark([55.847432, 49.070203]);
-    addPlaceMark([55.855593, 49.086373]);
-    //    addPlaceMark([55.861191, 48.962306]); --нет дороги к баку
-    addPlaceMark([55.908611, 49.061786]);
+    /*------------------------Координаты мусоровозов------------------------*/
+    msk_truck = [55.864268, 49.001104];
+    kirov_truck = [55.797787, 49.068496];
+    vahit_truck = [55.785043, 49.140487];
+    sov_truck = [55.831954, 49.192742];
+    nsav_truck = [55.823146, 49.14788];
+    privol_truck = [55.732884, 49.104995];
+    avia_truck = [55.90861, 49.06179];
 
 
-    //addTruck([latitude, longitude]); //наш муссоровоз
-    //addTruck([55.773556, 49.171588]);
-    //addTruck([55.801829, 48.991953]);
-
-    addTruck([55.864268, 49.001104]); // Московский
-//    addTruck([55.823146, 49.14788]); // Ново-савиновский (1)
-//    addTruck([55.831954, 49.192742]); // Советский
-    addTruck([55.797787, 49.068496]); // Кировский
-//    addTruck([55.785043, 49.140487]); // Вахитовский
-//    addTruck([55.732884, 49.104995]); // Приволжский
-
-    //Координаты баков в Вахитовском районе
+    /*------------------------Координаты контейнеров------------------------*/
     vahit_district = [
         [55.785043, 49.140487],
         [55.788905, 49.133983],
@@ -518,6 +488,45 @@ ymaps.ready(function () {
         [55.820025, 49.175081],
         [55.814093, 49.103333]
     ]
+
+/*------------------------Добавление контейнеров на карту------------------------*/
+    //Ново-Савиновский район
+    for (var i = 0; i < nsav_district.length; i++)
+        addPlaceMark(nsav_district[i]);
+
+    // Московский район
+    for (var i = 0; i < msk_district.length; i++)
+        addPlaceMark(msk_district[i]);
+
+    //Советский
+    for (var i = 0; i < sov_district.length; i++)
+        addPlaceMark(sov_district[i]);
+
+    //Приволжский
+    for (var i = 0; i < privol_district.length; i++)
+        addPlaceMark(privol_district[i]);
+
+    //Вахитовский
+    for (var i = 0; i < vahit_district.length; i++)
+        addPlaceMark(vahit_district[i]);
+
+    //Кировский
+    for (var i = 0; i < kirov_district.length; i++)
+    addPlaceMark(kirov_district[i]);
+
+    //Авиастроительный
+    for (var i = 0; i < avia_district.length; i++)
+        addPlaceMark(avia_district[i]);
+
+    /*------------------------Добавление мусоровозов на карту------------------------*/
+    addTruck(avia_truck); // Авиастроительный
+    addTruck(msk_truck); // Московский
+    addTruck(nsav_truck); // Ново-савиновский (1)
+    addTruck(sov_truck); // Советский
+    addTruck(kirov_truck); // Кировский
+    addTruck(vahit_truck); // Вахитовский
+    addTruck(privol_truck); // Приволжский
+
 
 
 });
