@@ -61,7 +61,8 @@ public class MyActivity extends Activity {
             else
                   ipTextView.setText("IP_IS_NULL");
 
-            new Thread(new WiFiReceiver()).start();
+            //new Thread(new WiFiReceiver()).start();
+            new Thread(new UDPServer()).start();
 
       }
 

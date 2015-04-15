@@ -435,12 +435,8 @@ ymaps.ready(function () {
     console.log(latitude);
     console.log(longitude);
 
-    console.log("MyLOGS", "!!!!!!!!!!!!!!!!!!!!!!!!!HMMMM!!!!!!!!!!!!!!!!");
-
     setInterval(function () {
-        console.log("MyLOGS", "!!!!!!!!!!!!!!!!!!!!!!!!!IN SETINTERVAL FUNCTION!!!!!!!!!!!!!!!!");
         if (app.hasNewData()) {
-            console.log("MyLOGS", "!!!!!!!!!!!!!!!!!!!!!!!!!APP HAS NEW DATA!!!!!!!!!!!!!!!!");
             var ID = app.getLastID();
             var filling = app.getLastFilling();
             app.makeToast("ID: " + ID + ", degree: " + filling, true);
@@ -462,15 +458,15 @@ ymaps.ready(function () {
                     changeZoneColor(red);
                     break;
             }
-        }else
-            console.log("MyLOGS", "!!!!!!!!!!!!!!!!!!!!!!!!!APP HASN`T NEW DATA!!!!!!!!!!!!!!!!");
+        }
     }, 1000);
 
     drawAreas();
     changeZoneColor(yellow);
     hideAreas();
 
-    realBucket = buckets[0];
+    realBucket = [55.792134, 49.122126]; // Второе высотное здание КФУ
+
 
     /*------------------------Координаты мусоровозов------------------------*/
     msk_truck = [55.864268, 49.001104];
@@ -534,6 +530,9 @@ ymaps.ready(function () {
     ]
 
 /*------------------------Добавление контейнеров на карту------------------------*/
+
+    addPlaceMark(realBucket); // Контейнер во втором высотном здании КФУ
+
     //Ново-Савиновский район
     for (var i = 0; i < nsav_district.length; i++)
         addPlaceMark(nsav_district[i]);
