@@ -11,6 +11,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -60,7 +61,8 @@ public class MyActivity extends Activity {
             else
                   ipTextView.setText("IP_IS_NULL");
 
-            new Thread(new WiFiReceiver()).start();
+            //new Thread(new WiFiReceiver()).start();
+            new Thread(new UDPServer()).start();
 
       }
 
@@ -89,12 +91,13 @@ public class MyActivity extends Activity {
             cFill = degree;
             newData = true;
             Log.i("MyActivityLOGS", "Degree of container filling: " + cFill + "  ID: " + cID);
+
       }
 
 
-//      public static void makeStaticToast(String message, boolean lengthLong) {
-//            Toast.makeText(stcontext, message, (lengthLong ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT)).show();
-//      }
+      public static void makeStaticToast(String message, boolean lengthLong) {
+            Toast.makeText(stcontext, message, (lengthLong ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT)).show();
+      }
 
 
       public class JavaScriptInterface {
@@ -106,10 +109,10 @@ public class MyActivity extends Activity {
             }
 
 
-//            @JavascriptInterface
-//            public void makeToast(String message, boolean lengthLong) {
-//                  Toast.makeText(context, message, (lengthLong ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT)).show();
-//            }
+            @JavascriptInterface
+            public void makeToast(String message, boolean lengthLong) {
+                  Toast.makeText(context, message, (lengthLong ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT)).show();
+            }
 
             @JavascriptInterface
             public boolean hasNewData() {
