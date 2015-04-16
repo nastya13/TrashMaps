@@ -9,7 +9,6 @@
         <option name="RES_FOLDER_RELATIVE_PATH" value="/../res" />
         <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/../assets" />
         <option name="LIBS_FOLDER_RELATIVE_PATH" value="/../libs" />
-        <option name="APK_PATH" value="/../out/production/maps/maps.apk" />
       </configuration>
     </facet>
   </component>

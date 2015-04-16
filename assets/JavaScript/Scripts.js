@@ -1,6 +1,3 @@
-/**
- * Created by Кель on 18.11.2014.
- */
 var myMap;
 var placeMarks = [];
 var clicked = [];
@@ -29,6 +26,7 @@ function routeCase1() {
     ymaps.route(avia_district.concat([avia_truck])).then(function (route) {
         autoRoutes[0] = route;
         myMap.geoObjects.add(route);
+        route.options.set({ strokeWidth: 8, strokeColor: 'f26522ff', opacity: 0.9 });
         var points = route.getWayPoints(),
             lastPoint = points.getLength() - 1;
         //для того, чтобы на карте не было страшных "булавок"
@@ -43,6 +41,7 @@ function routeCase1() {
     ymaps.route(msk_district.concat([msk_truck])).then(function (route) {
         autoRoutes[1] = route;
         myMap.geoObjects.add(route);
+        route.options.set({ strokeWidth: 3, strokeColor: '39b54aff', opacity: 0.9 });
         var points = route.getWayPoints(),
             lastPoint = points.getLength() - 1;
         //для того, чтобы на карте не было страшных "булавок"
@@ -56,6 +55,7 @@ function routeCase1() {
     ymaps.route(vahit_district.concat([vahit_truck])).then(function (route) {
         autoRoutes[2] = route;
         myMap.geoObjects.add(route);
+        route.options.set({ strokeWidth: 4, strokeColor: '662d91ff', opacity: 0.9 });
         var points = route.getWayPoints(),
             lastPoint = points.getLength() - 1;
         //для того, чтобы на карте не было страшных "булавок"
@@ -70,6 +70,7 @@ function routeCase1() {
     ymaps.route(nsav_district.concat([nsav_truck])).then(function (route) {
         autoRoutes[3] = route;
         myMap.geoObjects.add(route);
+        route.options.set({ strokeWidth: 2, strokeColor: 'ed145bff', opacity: 0.9 });
         var points = route.getWayPoints(),
             lastPoint = points.getLength() - 1;
         //для того, чтобы на карте не было страшных "булавок"
@@ -83,6 +84,7 @@ function routeCase1() {
     ymaps.route(kirov_district.concat([kirov_truck])).then(function (route) {
         autoRoutes[4] = route;
         myMap.geoObjects.add(route);
+        route.options.set({strokeWidth: 8, strokeColor: '2e9592ff', opacity: 0.9 });
         var points = route.getWayPoints(),
             lastPoint = points.getLength() - 1;
         //для того, чтобы на карте не было страшных "булавок"
@@ -96,6 +98,7 @@ function routeCase1() {
     ymaps.route(privol_district.concat([privol_truck])).then(function (route) {
         autoRoutes[5] = route;
         myMap.geoObjects.add(route);
+        route.options.set({ strokeWidth: 3, strokeColor: '00aeefff', opacity: 0.9 });
         var points = route.getWayPoints(),
             lastPoint = points.getLength() - 1;
         //для того, чтобы на карте не было страшных "булавок"
@@ -109,6 +112,7 @@ function routeCase1() {
     ymaps.route(privol_district.concat([sov_truck])).then(function (route) {
         autoRoutes[6] = route;
         myMap.geoObjects.add(route);
+        route.options.set({ strokeWidth: 8, strokeColor: '00a99dff', opacity: 0.9 });
         var points = route.getWayPoints(),
             lastPoint = points.getLength() - 1;
         //для того, чтобы на карте не было страшных "булавок"
@@ -127,6 +131,7 @@ function routeCase2() {
     ymaps.route(avia_district.concat(msk_district).concat([msk_truck])).then(function (route) {
         autoRoutes[0] = route;
         myMap.geoObjects.add(route);
+        route.options.set({ strokeWidth: 4, strokeColor: 'f26522ff', opacity: 0.9 });
         var points = route.getWayPoints(),
             lastPoint = points.getLength() - 1;
         //для того, чтобы на карте не было страшных "булавок"
@@ -140,6 +145,7 @@ function routeCase2() {
     ymaps.route(kirov_district.concat(vahit_district).concat([vahit_truck])).then(function (route) {
         autoRoutes[1] = route;
         myMap.geoObjects.add(route);
+        route.options.set({ strokeWidth: 4, strokeColor: '39b54aff', opacity: 0.9 });
         var points = route.getWayPoints(),
             lastPoint = points.getLength() - 1;
         //для того, чтобы на карте не было страшных "булавок"
@@ -153,6 +159,8 @@ function routeCase2() {
     ymaps.route(nsav_district.concat([nsav_truck])).then(function (route) {
         autoRoutes[2] = route;
         myMap.geoObjects.add(route);
+        route.options.set({ strokeWidth: 4, strokeColor: '662d91ff', opacity: 0.9 });
+
         var points = route.getWayPoints(),
             lastPoint = points.getLength() - 1;
         //для того, чтобы на карте не было страшных "булавок"
@@ -166,6 +174,7 @@ function routeCase2() {
     ymaps.route(privol_district.concat([privol_truck])).then(function (route) {
         autoRoutes[3] = route;
         myMap.geoObjects.add(route);
+        route.options.set({ strokeWidth: 4, strokeColor: '2e9592ff', opacity: 0.9 });
         var points = route.getWayPoints(),
             lastPoint = points.getLength() - 1;
         //для того, чтобы на карте не было страшных "булавок"
@@ -179,6 +188,7 @@ function routeCase2() {
     ymaps.route(sov_district.concat([sov_truck])).then(function (route) {
         autoRoutes[4] = route;
         myMap.geoObjects.add(route);
+        route.options.set({strokeWidth: 4, strokeColor: 'ed145bff', opacity: 0.9 });
         var points = route.getWayPoints(),
             lastPoint = points.getLength() - 1;
         //для того, чтобы на карте не было страшных "булавок"
@@ -195,6 +205,7 @@ function routeCase3() {
     ymaps.route(vahit_district.concat(privol_district).concat([vahit_truck])).then(function (route) {
         autoRoutes[0] = route;
         myMap.geoObjects.add(route);
+        route.options.set({ strokeWidth: 4, strokeColor: 'f26522ff', opacity: 0.9 });
         var points = route.getWayPoints(),
             lastPoint = points.getLength() - 1;
         //для того, чтобы на карте не было страшных "булавок"
@@ -208,6 +219,7 @@ function routeCase3() {
     ymaps.route(msk_district.concat(kirov_district).concat(avia_district).concat([msk_truck])).then(function (route) {
         autoRoutes[1] = route;
         myMap.geoObjects.add(route);
+        route.options.set({ strokeWidth: 4, strokeColor: '39b54aff', opacity: 0.9 });
         var points = route.getWayPoints(),
             lastPoint = points.getLength() - 1;
         //для того, чтобы на карте не было страшных "булавок"
@@ -221,6 +233,7 @@ function routeCase3() {
     ymaps.route(nsav_district.concat(sov_district).concat([nsav_truck])).then(function (route) {
         autoRoutes[2] = route;
         myMap.geoObjects.add(route);
+        route.options.set({ strokeWidth: 4, strokeColor: '662d91ff', opacity: 0.9 });
         var points = route.getWayPoints(),
             lastPoint = points.getLength() - 1;
         //для того, чтобы на карте не было страшных "булавок"
@@ -433,7 +446,8 @@ ymaps.ready(function () {
         type: 'yandex#map',
         controls: []
     });
-
+    myMap.controls.add(new ymaps.control.MiniMap({type:'yandex#hybrid'},{zoomOffset: 3}));
+    myMap.controls.add('smallZoomControl');
 
     var latitude = ymaps.geolocation.latitude;
     var longitude = ymaps.geolocation.longitude;
